@@ -143,9 +143,9 @@ $$
 
 ##### 蚁群优化算法
 
-* **信息素更新** ：蚂蚁在经过路径时会留下信息素，路径的选择概率依赖于信息素的浓度。
-* **状态转移规则** ：蚂蚁通过信息素和启发式信息（例如距离或其他问题相关信息）来选择下一步的路径。
-* **信息素挥发** ：信息素会随着时间逐渐挥发，防止过度依赖某条路径，增强探索能力。
+* 信息素更新 ：蚂蚁在经过路径时会留下信息素，路径的选择概率依赖于信息素的浓度。
+* 状态转移规则：蚂蚁通过信息素和启发式信息（例如距离或其他问题相关信息）来选择下一步的路径。
+* 信息素挥发 ：信息素会随着时间逐渐挥发，防止过度依赖某条路径，增强探索能力。
 
 ###### 初始化
 
@@ -158,7 +158,7 @@ $$
 状态转移概率公式
 
 $$
-p_{ij}^k(t) = \frac{\left[\tau_{ij}(t)\right]^\alpha \cdot \left[\eta_{ij}\right]^\beta}{\sum_{l \in \mathcal{N}_i^k} \left[\tau_{il}(t)\right]^\alpha \cdot \left[\eta_{il}\right]^\beta}
+p_{ij}^k(t) = \frac{\left[\tau_{ij}(t)\right]^\alpha \cdot \left[\eta_{ij}\right]^\beta}{\sum_{l \in N_i^k} \left[\tau_{il}(t)\right]^\alpha \cdot \left[\eta_{il}\right]^\beta}
 $$
 
 $\tau_{ij}(t)$ 表示从节点 $i$ 到节点 $j$ 的信息素浓度。
@@ -184,15 +184,11 @@ $\rho$ 是信息素挥发系数，控制信息素的挥发速度
 $\Delta \tau_{ij}^k(t)$ 是蚂蚁 $k$ 在时间对路径 $(i ,j)$留下的信息素增量，具体公式为：
 
 $$
-\Delta \tau_{ij}^k(t) = 
-\begin{cases}
-\frac{Q}{L_k}, & \text{if ant } k \text{ uses edge } (i, j) \\
-0, & \text{otherwise}
+\Delta \tau_{ij}^k(t)=\begin{cases}
+\frac{Q}{L_k}, & if \quad ant \quad k \quad  uses \quad edge (i, j) \\
+0, & otherwise
 \end{cases}
-
 $$
-
-
 
 $Q$ 是常数，通常与问题规模相关。
 
